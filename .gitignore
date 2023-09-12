@@ -39,3 +39,4 @@
 /target/test-classes/CreateOrderTest.class
 /target/test-classes/CreateClientTest.class
 /target/test-classes/
+/.allure/

@@ -18,11 +18,6 @@ public class Client {
         this.password = password;
         this.email = email;
     }
-
-    public Client(){
-
-    }
-
     public String getName() {
         return name;
     }
