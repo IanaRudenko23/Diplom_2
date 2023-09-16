@@ -6,11 +6,7 @@ import org.example.client.ClientSteps;
 import org.example.order.OrderSteps;
 import org.junit.Before;
 import org.junit.Test;
-
-import static io.restassured.RestAssured.given;
 import static org.example.client.ClientSteps.createClient;
-import static org.example.client.ClientSteps.loginClient;
-import static org.example.order.OrderSteps.createOrderWithIngredients;
 import static org.example.order.OrderSteps.createOrderWithIngredientsAndAuth;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -31,7 +27,7 @@ public class GetOrdersTest {
         Response response = createClient(client);
         response.then().assertThat().statusCode(200).and().body("success", equalTo(true));
         token = response.body().jsonPath().getString("accessToken");
-        response = createOrderWithIngredientsAndAuth(hash,token);
+        createOrderWithIngredientsAndAuth(hash,token);
         response = OrderSteps.getOrdersOfAuthClient(token);
         response.then().assertThat().statusCode(200).and().body("success",equalTo(true));
         System.out.println(response.body().print());

@@ -20,14 +20,13 @@ public class LoginClientTest {
     @Test
     @DisplayName("Логин существующего пользователя")
     public void loginOfExistedClient(){
-        Client client = new Client("bunny.bunnyB@yandex.ru","Bunny123451","Bunny101");
+        Client client = new Client("et.euismod@aol.com","8tOlfn#zg","Yvette Shields");
         Response response = createClient(client);
-        response.then().assertThat().statusCode(200).and().body("success", equalTo(true));
         token = response.body().jsonPath().getString("accessToken");
-        client = new Client("bunny.bunnyB@yandex.ru","Bunny123451");
+        client = new Client("et.euismod@aol.com","8tOlfn#zg");
         response = loginClient(client);
-        response.then().assertThat().statusCode(200).and().body("success", equalTo(true));
         token = response.body().jsonPath().getString("accessToken");
+        response.then().assertThat().statusCode(200).and().body("success", equalTo(true));
         ClientSteps.deleteClient(token);
     }
     @Test
